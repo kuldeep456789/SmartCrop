@@ -96,11 +96,18 @@ const Dashboard = () => {
                     transition={{ delay: 0.2 }}
                 >
                     {!result && !loading && (
-                        <div className="card" style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', background: '#f8fafc', borderStyle: 'dashed', borderWidth: '2px' }}>
-                            <div>
-                                <div style={{ color: '#cbd5e1', marginBottom: '1rem' }}><Sprout size={64} /></div>
-                                <h3 style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--gray)' }}>No Analysis Yet</h3>
-                                <p style={{ color: '#94a3b8' }}>Fill out the form to see AI recommendations.</p>
+                        <div className="card" style={{ height: '100%', padding: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column', position: 'relative' }}>
+                            <img
+                                src="/dashboard.jpg"
+                                alt="Agriculture Dashboard"
+                                style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0, opacity: 0.6 }}
+                            />
+                            <div style={{ position: 'relative', zIndex: 1, height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', background: 'linear-gradient(to top, rgba(255,255,255,0.95), rgba(255,255,255,0.4))', padding: '2rem' }}>
+                                <div>
+                                    <div style={{ color: 'var(--primary)', marginBottom: '1rem' }}><Sprout size={64} /></div>
+                                    <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--dark)', marginBottom: '0.5rem' }}>Ready for Analysis</h3>
+                                    <p style={{ color: 'var(--gray)', maxWidth: '250px', margin: '0 auto' }}>Enter your soil data on the left to get AI-powered crop recommendations.</p>
+                                </div>
                             </div>
                         </div>
                     )}
@@ -116,39 +123,46 @@ const Dashboard = () => {
                     )}
 
                     {result && (
-                        <div className="card result-card" style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem', background: 'rgba(255,255,255,0.2)', width: 'fit-content', padding: '0.25rem 0.75rem', borderRadius: '2rem', fontSize: '0.85rem' }}>
-                                <div style={{ width: '8px', height: '8px', background: '#4ade80', borderRadius: '50%' }}></div> AI Confidence: {result.confidence}
-                            </div>
-
-                            <h2 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '0.5rem' }}>{result.recommended_crops[0]}</h2>
-                            <p style={{ fontSize: '1.1rem', opacity: 0.9, marginBottom: '2rem' }}>
-                                Top Recommendation
-                            </p>
-
-                            <div style={{ background: 'rgba(255,255,255,0.1)', padding: '1.5rem', borderRadius: '1rem', marginBottom: '1.5rem' }}>
-                                <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                                    <Info size={20} /> <span style={{ fontWeight: 600 }}>Analysis</span>
+                        <div className="card result-card" style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+                            <img
+                                src="/dashboard.jpg"
+                                alt=""
+                                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.15, pointerEvents: 'none' }}
+                            />
+                            <div style={{ position: 'relative', zIndex: 1 }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem', background: 'rgba(255,255,255,0.2)', width: 'fit-content', padding: '0.25rem 0.75rem', borderRadius: '2rem', fontSize: '0.85rem' }}>
+                                    <div style={{ width: '8px', height: '8px', background: '#4ade80', borderRadius: '50%' }}></div> AI Confidence: {result.confidence}
                                 </div>
-                                <p style={{ lineHeight: 1.5 }}>
-                                    {result.analysis}
+
+                                <h2 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '0.5rem' }}>{result.recommended_crops[0]}</h2>
+                                <p style={{ fontSize: '1.1rem', opacity: 0.9, marginBottom: '2rem' }}>
+                                    Top Recommendation
                                 </p>
-                            </div>
 
-                            <div style={{ marginBottom: '2rem' }}>
-                                <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '0.5rem', fontWeight: 600 }}>ALTERNATIVE CROPS</div>
-                                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                                    {result.recommended_crops.slice(1).map((crop: string) => (
-                                        <span key={crop} style={{ background: 'white', color: 'var(--primary)', padding: '0.5rem 1rem', borderRadius: '0.5rem', fontWeight: 600, fontSize: '0.9rem' }}>
-                                            {crop}
-                                        </span>
-                                    ))}
+                                <div style={{ background: 'rgba(255,255,255,0.1)', padding: '1.5rem', borderRadius: '1rem', marginBottom: '1.5rem' }}>
+                                    <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.5rem' }}>
+                                        <Info size={20} /> <span style={{ fontWeight: 600 }}>Analysis</span>
+                                    </div>
+                                    <p style={{ lineHeight: 1.5 }}>
+                                        {result.analysis}
+                                    </p>
                                 </div>
-                            </div>
 
-                            <button className="btn" style={{ background: 'white', color: 'var(--primary)', width: '100%', justifyContent: 'center' }}>
-                                View Detailed Report <ArrowRight size={18} />
-                            </button>
+                                <div style={{ marginBottom: '2rem' }}>
+                                    <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '0.5rem', fontWeight: 600 }}>ALTERNATIVE CROPS</div>
+                                    <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                                        {result.recommended_crops.slice(1).map((crop: string) => (
+                                            <span key={crop} style={{ background: 'white', color: 'var(--primary)', padding: '0.5rem 1rem', borderRadius: '0.5rem', fontWeight: 600, fontSize: '0.9rem' }}>
+                                                {crop}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <button className="btn" style={{ background: 'white', color: 'var(--primary)', width: '100%', justifyContent: 'center' }}>
+                                    View Detailed Report <ArrowRight size={18} />
+                                </button>
+                            </div>
                         </div>
                     )}
                 </motion.div>

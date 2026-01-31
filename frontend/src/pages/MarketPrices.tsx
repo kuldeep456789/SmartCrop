@@ -30,7 +30,7 @@ const MarketPrices = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2 }}
-                    className="card"
+                    className="card glass-morphism"
                 >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
                         <TrendingUp style={{ color: 'var(--primary)' }} />
@@ -57,7 +57,7 @@ const MarketPrices = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 }}
-                        className="card"
+                        className="card glass-morphism"
                         style={{ padding: '1.5rem' }}
                     >
                         <BarChart3 style={{ color: 'var(--secondary)', marginBottom: '1rem' }} />
@@ -69,7 +69,7 @@ const MarketPrices = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4 }}
-                        className="card"
+                        className="card glass-morphism"
                         style={{ padding: '1.5rem' }}
                     >
                         <Calendar style={{ color: '#0ea5e9', marginBottom: '1rem' }} />
@@ -81,7 +81,7 @@ const MarketPrices = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.5 }}
-                        className="card"
+                        className="card glass-morphism"
                         style={{ padding: '1.5rem' }}
                     >
                         <Map style={{ color: '#8b5cf6', marginBottom: '1rem' }} />
@@ -93,7 +93,7 @@ const MarketPrices = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.6 }}
-                        className="card"
+                        className="card glass-morphism"
                         style={{ padding: '1.5rem' }}
                     >
                         <Wallet style={{ color: '#10b981', marginBottom: '1rem' }} />
